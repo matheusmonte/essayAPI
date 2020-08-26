@@ -11,18 +11,7 @@ module.exports = class User{
         this.dataCreated = new Date();
     }
 
-    save(){
-        let sql ='INSERT INTO user (userId, username, name, password, type, dataCreated) VALUES (?,?,?,?,?,?)'
-        let params =[this.userId, this.name, this.username , this.name, this.password, this.type, this.dataCreated]
-        db.run(sql, params, function (err, result) {
-            if (err){
-                return;
-            }
-            return this;
-        });
-    }
-
-    get(userId){
-
+    getInstance(){
+        return this;
     }
 }
