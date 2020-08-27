@@ -1,5 +1,5 @@
 const shortId = require('shortid');
-const db = require("../data/database.js");
+
 
 module.exports = class User{
     constructor(username, name, password, type) {

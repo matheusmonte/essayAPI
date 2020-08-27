@@ -1,9 +1,16 @@
+const shortId = require('shortid');
+
 module.exports = class File{
-    constructor(title, authorId, teacherId, physicalLocation) {
+    constructor(title, authorId, physicalLocation, status) {
+        this.fileId = shortId.generate();
         this.title = title;
         this.authorId = authorId;
-        this.teacherId = teacherId;
         this.physicalLocation = physicalLocation;
+        this.status = status;
         this.createdDate = new Date();
+    }
+
+    getInstance(){
+        return this;
     }
 }

@@ -17,7 +17,21 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             type text,
             dataCreated text 
           
-            )`,
+            );`,
+            (err) => {
+                if (err) {
+                    // Table already created
+                }
+            });
+        db.run(` CREATE TABLE files (
+            fileId text,
+            title text,
+            authorId text,
+            physicalLocation text,
+            status text,
+            downloadedBy text,
+            dataCreated text
+            );`,
             (err) => {
                 if (err) {
                     // Table already created
