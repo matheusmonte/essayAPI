@@ -77,6 +77,26 @@ router.put('/downloaded', function (req, res){
     });
 });
 
+router.put('/uploaded', function (req, res){
+    let sql ='UPDATE files SET physicalLocation=$physicalLocation where fileId = $fileId'
+    let params = {
+        $fileId :req.body.fileId,
+        $physicalLocation :req.body.physicalLocation
+    }
+
+    db.run(sql, params, function (err, result) {
+        if (err){
+            res.status(400).json({"error": err.message})
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": params,
+            "id" : this.lastID
+        })
+    });
+});
+
 router.post('/register',function(req, res, next) {
 
     let fileList = new File(req.body.title, req.body.authorId, req.body.physicalLocation, 'PENDING'   ).getInstance();
